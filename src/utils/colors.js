@@ -10,6 +10,7 @@ const COLORS = {
   whiteTwo:'#d7d6d7',
   aquaBlue:'#5dd2ea',
   seaweedTwo:'#55c884',
+  greyBackground:'#ededed'
   
 };
 

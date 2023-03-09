@@ -26,16 +26,24 @@ function SignIn({ navigation }) {
     setenteredPassword(passtext);
   }
 
-  function ButtonHandler() {
+  async function ButtonHandler() {
     validate();
+    // console.log("validate++=>", )
     if (userList) {
       let find = userList.filter((item) => (item.userEmail == userdata.userEmail) && (item.userPassword == userdata.userPassword));
+
+      // console.log("find====>", find);
        if (find?.length) {
-        navigation.navigate('Stores');
+        navigation.navigate('TabNavigator');
+        await AsyncStorage.setItem("userloggedin", JSON.stringify(userdata));
+
        } else {
          Alert.alert('user not exist, please Signup first');
          navigation.navigate('SignUp');
        }
+     } else{
+        Alert.alert('user not exist, please Signup first');
+        navigation.navigate('SignUp');
      }
     }
 
@@ -45,27 +53,26 @@ function SignIn({ navigation }) {
      setUserList(JSON.parse(list));
    }
 
+  
+
    useEffect(() => {
       getUserList();
    }, [])
 
+   
 
    function validate() {
     let reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      if (reg.test(enteredEmail) == false) {
       Alert.alert("Email is not correct");
       return false;
-    } else {
-      console.log("Email is correct");
     }
 
      let regnum = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
      if (regnum.test(enteredPassword) == false) {
        Alert.alert("please enter a valid password");
       return;
-     } else {
-      console.log("Password is correct");
-    }
+     }
    }
 
     return (

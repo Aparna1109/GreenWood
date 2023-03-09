@@ -57,12 +57,12 @@ function SignUp({navigation}){
       } else {
         arr = [...arr, userdata];
         AsyncStorage.setItem('usersdata', JSON.stringify(arr));
-        navigation.navigate('Stores')
+        navigation.navigate('TabNavigator')
       }
     } else {
       let newUserData = [userdata];
       AsyncStorage.setItem('usersdata', JSON.stringify(newUserData));
-      navigation.navigate('Stores')
+      navigation.navigate('TabNavigator')
     }
   }
 
@@ -73,9 +73,13 @@ function SignUp({navigation}){
     setUserList(JSON.parse(list));
   }
 
+
   useEffect(() => {
     getUserList();
 }, [])
+
+
+
 
   return(
     <View style={styles.mainContainer}>

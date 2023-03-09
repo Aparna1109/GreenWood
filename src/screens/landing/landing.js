@@ -8,10 +8,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // import { COLORS } from "../../utils/colors";
 function Landing({ navigation }) {
 
-const clearAsyncStorage = async() => {
-  AsyncStorage.clear();
-}
-
   return (
     <View style={styles.mainContainer}>
       <View style={styles.imageContainer}>
@@ -23,7 +19,7 @@ const clearAsyncStorage = async() => {
       </TouchableOpacity>
 
       <View style={styles.socialIcons}>
-        <TouchableOpacity style={styles.facebookBtn} onPress={clearAsyncStorage}>
+        <TouchableOpacity style={styles.facebookBtn}>
           <Icon name="facebook" size={23} color={COLORS.white} />
           <Text style={styles.iconsText}>Facebook</Text>
         </TouchableOpacity>

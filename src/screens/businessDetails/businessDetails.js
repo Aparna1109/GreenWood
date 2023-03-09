@@ -16,7 +16,7 @@ function BusinessDetails() {
   return (
     <View style={styles.mainContainer}>
       <ImageBackground style={styles.imageContainer} source={image}>
-        <Image style={styles.icon} source={require('../../assets/images/goldicon.png')} />
+        <Image style={styles.icon} source={require('../../assets/images/goldicon.png')}/>
       </ImageBackground>
 
       <View style={styles.detailsContainer}>
@@ -56,9 +56,9 @@ function BusinessDetails() {
       </View>
 
       <ScrollView contentContainerStyle={styles.flatExerciseContainer}>
+
         <View>
           <DiscountList />
-
           <View>
             <View>
               <View style={styles.offeringContainer}>

@@ -3,12 +3,12 @@ import { View, Text, FlatList, ImageBackground, TouchableOpacity, Image } from "
 import { styles } from "./style";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS } from "../../utils/colors";
-import { Fonts } from "../../utils/fontFamily";
+import Card from "../../components/card";
 
 const DATA=[
   {
     id:1,
-    icon:'gamepad',
+    image: require('../../assets/images/gamepad.png'),
     title:'Entertainment',
     data:[
       {
@@ -28,7 +28,7 @@ const DATA=[
         type:'Fitness & Training',
         distance:'3.7 km',
         offers:'3 OFFERS',
-        rating:'4.5'
+        rating:'4.5' 
       },
     
       {
@@ -67,7 +67,7 @@ const DATA=[
 
   {
     id:2,
-    icon:'heartbeat',
+    image: require('../../assets/images/heartbeat.png'),
     title:'Medical',
     data:[
       {
@@ -124,7 +124,7 @@ const DATA=[
 
   {
     id:3,
-    icon:'lightbulb-o',
+    image: require('../../assets/images/bulb.png'),
     title:'Technology',
     data:[
       {
@@ -194,16 +194,16 @@ function Stores({navigation}){
     const textColor = item.id === selectedId ? COLORS.white : COLORS.greyishBrown;
 
     return (
-      <TouchableOpacity onPress={() => {
-        setSelectedId(item.id);
-        setfilteredData(item.data);
-      }} style={[styles.item, { backgroundColor: backgroundColor }]}>
-        <Icon name={item.icon} size={27} color={textColor}/>
-        <Text style={[styles.title, { color: textColor }]}>{item.title}</Text>
-      </TouchableOpacity>
+      <Card
+        item={item}
+        tintColor={textColor}
+        textColor={textColor}
+        backgroundColor={backgroundColor}
+        onPress={() => { setSelectedId(item.id) }}
+      />
     );
   };
-
+  
   
  
   const DetailsItem=({image, name, type , distance, offers, rating}) => (
