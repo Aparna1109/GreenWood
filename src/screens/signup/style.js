@@ -70,7 +70,30 @@ const styles=StyleSheet.create({
     fontSize: 15,
     letterSpacing: 0.88,
     fontWeight: 'bold',
-  }
+  },
+
+  mainModalContainer:{
+    padding:30, 
+    width:'100%', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: 'white', 
+  },
+
+  emailModalText:{
+    fontFamily:Fonts.poppinsSemiBold, 
+    fontSize:15
+  },
+
+  textInputContainer: {
+    marginBottom: 10,
+    marginTop:20,
+  },
+
+  roundedTextInput: {
+    borderRadius: 6,
+    borderWidth: 2,
+  },
 })
 
 export { styles }

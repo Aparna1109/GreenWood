@@ -301,7 +301,26 @@ const styles = StyleSheet.create({
     justifyContent:'center', 
     flexDirection: 'row', 
     alignItems: 'center',
-  }
+  },
+
+  priceText:{
+    fontSize:17, 
+    fontFamily:Fonts.poppinsSemiBold, 
+    color:'#4c8509', 
+    letterSpacing:0.41
+  },
+
+  mrpText:{
+    fontSize:11, 
+    fontFamily:Fonts.poppinsRegular, 
+    color:'#868686', 
+    letterSpacing:0.41, 
+    marginLeft:3,
+    textDecorationLine:'line-through',
+    textDecorationColor:COLORS.brownishGrey,
+  },
+   
+  
 
 
 

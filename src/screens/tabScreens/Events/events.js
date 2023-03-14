@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 
 import { View, Text, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, ImageBackground } from "react-native";
 import { styles } from './style';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS } from "../../../utils/colors";
 import Card from '../../../components/card';
 import CardWithImage from '../../../components/cardWithImage';

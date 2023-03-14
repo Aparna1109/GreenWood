@@ -1,11 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Events from '../screens/tabScreens/Events/events';
-import Deals from '../screens/tabScreens/deals';
+import Events from '../screens/tabScreens/events/events';
+import Deals from '../screens/tabScreens/deals/deals';
 import Explorer from '../screens/explorer/explorer';
 import More from '../screens/more/more';
 import BusinessDetails from '../screens/businessDetails/businessDetails';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Image } from 'react-native';
 import { Fonts } from '../utils/fontFamily';
 import { COLORS } from '../utils/colors';
@@ -35,10 +34,10 @@ function TabNavigator() {
         tabBarInactiveBackgroundColor:COLORS.white,
       }}/>
       <Tab.Screen 
-      name="Stores" 
-      component={Stores} 
+      name="Deals" 
+      component={Deals} 
       options={{
-        tabBarLabel:'Stores',
+        tabBarLabel:'Deals',
         tabBarLabelStyle: tabBarLabelStyle,
         tabBarIcon:() => (
           <Image source={require('../assets/images/offers.png')} style={{height:24, width:23}}/>

@@ -35,7 +35,7 @@ function MainNavigator() {
   
   return (
       
-      <Stack.Navigator initialRouteName="TabNavigator"  screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="SignUp"  screenOptions={{headerShown: false}}>
         <Stack.Screen name="Landing" component={Landing}/>
         <Stack.Screen name="SignIn" component={SignIn}/>
         <Stack.Screen name="Stores" component={Stores}/>

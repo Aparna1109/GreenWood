@@ -7,7 +7,7 @@ const businessData=[
     id:1,
     image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhveq2PigpErjM4TTG8oKVpWgMKTJBlhmfSg&usqp=CAU',
     description:'15% OFF on Cardio & Yoga',
-    year:'bhook lgi h bht tej' ,
+    year:'On Yearly Subscription' ,
     date:'Exp. 15 Jun 2019',
   },
 

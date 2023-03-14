@@ -44,9 +44,9 @@ const renderProduct=({item}) => {
 
         <View style={styles.productPriceContainer}>  
           <View style={styles.productDiscountContainer}>
-            <Text style={{fontSize:17, fontFamily:Fonts.poppinsSemiBold, color:'#4c8509', letterSpacing:0.41}}>{item.price}</Text>
-            <Text style={{fontSize:11, fontFamily:Fonts.poppinsRegular, color:'#868686', letterSpacing:0.41, marginLeft:3}}>{item.mrp}</Text>
-           
+            <Text style={styles.priceText}>{item.price}</Text>
+            <Text style={styles.mrpText}>{item.mrp}</Text>
+         
           </View>
 
           <View style={{justifyContent: 'center', alignItems: 'center',}}>

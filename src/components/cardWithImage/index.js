@@ -16,7 +16,6 @@ function CardWithImage({ item,}){
             </View> */}
         </ImageBackground>
       </View>
-
       <View style={[styles.eventDetailContainer,]}>
         <Text style={styles.titleText}>{item.title}</Text>
 
@@ -64,6 +63,8 @@ const styles = StyleSheet.create({
     justifyContent:'center', 
     paddingLeft:15,
     backgroundColor: COLORS.white,
+    borderRadius:5,
+
   },
 
   titleText:{
