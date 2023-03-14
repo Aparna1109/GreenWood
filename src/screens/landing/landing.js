@@ -18,6 +18,10 @@ function Landing({ navigation }) {
         <Text style={styles.signInText}>Sign in with Email</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('SignInNumber')}>
+        <Text style={styles.signInText}>Sign in with Number</Text>
+      </TouchableOpacity>
+
       <View style={styles.socialIcons}>
         <TouchableOpacity style={styles.facebookBtn}>
           <Icon name="facebook" size={23} color={COLORS.white} />

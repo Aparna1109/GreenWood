@@ -5,6 +5,7 @@ import Landing from '../screens/landing/landing';
 import SignIn from '../screens/signIn/signin';
 import SignUp from '../screens/signup/signup';
 import Stores from '../screens/stores/stores';
+import SignInNumber from '../screens/signInNumber/signInNumber';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import BusinessDetails from '../screens/businessDetails/businessDetails';
 
@@ -32,12 +33,13 @@ function MainNavigator() {
     }, 3000);
   }, []);  
 
-  
+
   return (
       
-      <Stack.Navigator initialRouteName="SignUp"  screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="Landing"  screenOptions={{headerShown: false}}>
         <Stack.Screen name="Landing" component={Landing}/>
         <Stack.Screen name="SignIn" component={SignIn}/>
+        <Stack.Screen name="SignInNumber" component={SignInNumber}/>
         <Stack.Screen name="Stores" component={Stores}/>
         <Stack.Screen name="SignUp" component={SignUp}/>
         {/* <Stack.Screen name="BusinessDetails" component={BusinessDetails}/>

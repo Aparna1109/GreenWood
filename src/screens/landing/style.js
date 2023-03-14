@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent: 'center',
     borderRadius:6,
-    marginTop:77,
+    marginTop:20,
   },
 
   signInText:{
