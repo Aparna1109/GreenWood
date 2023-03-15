@@ -57,6 +57,22 @@ const styles = StyleSheet.create({
     letterSpacing: 0.76
   },
 
+  signInButton:{
+    width:'100%',
+    height:50,
+    backgroundColor:COLORS.seaweed,
+    alignItems:'center',
+    justifyContent: 'center',
+    borderRadius:6,
+    marginTop:20,
+  },
+
+  signInText:{
+    fontSize:15,
+    color:COLORS.white,
+    fontFamily:Fonts.poppinsRegular,
+  },
+
   goText: {
     fontFamily: Fonts.poppinsRegular,
     fontSize: 15,
@@ -97,7 +113,7 @@ const styles = StyleSheet.create({
     width:'100%', 
     justifyContent: 'center', 
     alignItems: 'center', 
-    backgroundColor: 'white', 
+    backgroundColor: 'white',
   },
 
   emailModalText:{

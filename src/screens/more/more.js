@@ -15,7 +15,7 @@ function More({navigation}){
 
   const clearAsyncStorage = async() => {
     AsyncStorage.clear();
-    navigation.navigate('SignIn');
+    navigation.navigate('Landing');
   } 
 
   
