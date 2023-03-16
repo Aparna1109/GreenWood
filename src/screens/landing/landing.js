@@ -4,9 +4,21 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS } from "../../utils/colors";
 import { styles } from "./style";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import database from '@react-native-firebase/database';
+
 
 // import { COLORS } from "../../utils/colors";
-function Landing({ navigation }) {
+ function Landing({ navigation }) {
+
+//   const Submit = async () => {
+//     database()
+//   .ref('/userDetails')
+//   .set({
+//     name: 'Ada Lovelace',
+//     age: 31,
+//   })
+//   .then(() => console.log('Data set.'));
+//   }
 
   return (
     <View style={styles.mainContainer}>
@@ -36,7 +48,10 @@ function Landing({ navigation }) {
       <View style={styles.footerContainer}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 55 }}>
           <Text style={styles.footerText}>Don't have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <TouchableOpacity 
+          onPress={() => navigation.navigate('SignUp')}
+          // onPress={Submit}
+          >
             <Text style={styles.signText}>Sign up</Text>
           </TouchableOpacity>
         </View>

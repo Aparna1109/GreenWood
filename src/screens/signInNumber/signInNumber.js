@@ -6,6 +6,8 @@ import OTPTextView from 'react-native-otp-textinput';
 import PhoneInput from "react-native-phone-number-input";
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome';
+// import database from '@react-native-firebase/database';
+
 
 function SignInNumber({ navigation }) {
 
@@ -22,6 +24,17 @@ function SignInNumber({ navigation }) {
     setModalVisible(!isModalVisible);
     
   };
+
+  // const Submit = async () => {
+  //   database()
+  // .ref('/userDetails')
+  // .set({
+  //   name: 'Ada Lovelace',
+  //   age: 31,
+  // })
+  // .then(() => console.log('Data set.'));
+  // }
+
 
   const requestOTP = async () => {
     if(phoneNumber){
