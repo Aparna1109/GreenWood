@@ -25,17 +25,6 @@ function SignInNumber({ navigation }) {
     
   };
 
-  // const Submit = async () => {
-  //   database()
-  // .ref('/userDetails')
-  // .set({
-  //   name: 'Ada Lovelace',
-  //   age: 31,
-  // })
-  // .then(() => console.log('Data set.'));
-  // }
-
-
   const requestOTP = async () => {
     if(phoneNumber){
       toggleModal();

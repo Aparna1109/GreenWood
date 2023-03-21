@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, Image, TextInput, TouchableOpacity, Text, Alert, Button } from "react-native";
-import OTPTextView from 'react-native-otp-textinput';
 import { styles } from "./style";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import ReactNativeModal from "react-native-modal";
 import { Fonts } from "../../utils/fontFamily";
+import auth from '@react-native-firebase/auth';
+import { setData } from "../../utils/store";
+
 
 function SignUp({ navigation }) {
 
@@ -13,17 +14,12 @@ function SignUp({ navigation }) {
   const [ConfirmPassword, setConfirmPassword] = useState('');
   const [userList, setUserList] = useState([]);
 
-  const [isModalVisible, setModalVisible] = useState(false);
 
   let userdata = {
     userEmail: enteredEmail,
     userPassword: enteredPassword,
   }
 
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
 
 
   function EmailHandler(emailtext) {
@@ -37,6 +33,33 @@ function SignUp({ navigation }) {
   function ConfirmHandler(confirmtext) {
     setConfirmPassword(confirmtext);
   }
+
+  // const storeToken = async (userid) => {
+  //   console.log(">>>>>store fn>>userid>>>>", userid);
+  //  await AsyncStorage.setItem('usersdata', JSON.stringify(userid));
+  //  navigation.navigate('TabNavigator');
+  // }
+
+  const createUser = (email, password) => {
+    try {
+      auth().createUserWithEmailAndPassword(email, password).then((res) => {
+        const userValue = res.user;
+        const userId = userValue.uid;
+        // storeToken(userId);
+        setData('usersdata', JSON.stringify({userId: userId}));
+        navigation.navigate('TabNavigator');
+
+      }).catch((err) => {
+        let error = String(err);
+        if (error.includes("auth/email-already-in-use")) {
+          Alert.alert("user is already exist, please login");
+          navigation.navigate('SignIn');
+        }
+      });
+    } catch (error) {
+      Alert.alert(error);
+    }
+  };
 
   function ButtonHandler() {
     let reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -58,9 +81,9 @@ function SignUp({ navigation }) {
         return;
       }
     }
-  
-    toggleModal();
 
+
+    createUser(enteredEmail, enteredPassword);
     // if (userList) {
     //   let arr = userList;
     //   let find = userList.filter((item) => item.userEmail == userdata.userEmail);
@@ -77,9 +100,10 @@ function SignUp({ navigation }) {
     //   AsyncStorage.setItem('usersdata', JSON.stringify(newUserData));
     //   navigation.navigate('TabNavigator')
     // }
+
+
   };
 
-  console.log("=====>>>>", isModalVisible);
 
   const getUserList = async () => {
 
@@ -119,27 +143,6 @@ function SignUp({ navigation }) {
           <Text style={styles.goText}>{"<< Go Back"}</Text>
         </TouchableOpacity>
       </View>
-
-      <ReactNativeModal isVisible={isModalVisible}>
-        <View style={styles.mainModalContainer}>
-          <Text style={styles.emailModalText}>Email Verification Code</Text>
-
-          <OTPTextView 
-          handleTextChange={(value) => {}}
-          containerStyle={styles.textInputContainer}
-          textInputStyle={styles.roundedTextInput}
-          // tintColor='blue'
-          // offTintColor='black'
-          inputCount={4}
-          inputCellLength={1}
-          />      
-
-        <TouchableOpacity onPress={toggleModal} style={styles.signButton}>
-          <Text style={styles.signText}>Submit</Text>
-        </TouchableOpacity>
-
-        </View>
-      </ReactNativeModal>
     </View>
   )
 }

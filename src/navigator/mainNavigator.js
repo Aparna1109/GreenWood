@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // import BusinessDetails from '../screens/businessDetails/businessDetails';
 
 import TabNavigator from './tabNavigator';
+import { getData } from '../utils/store';
 const Stack = createNativeStackNavigator();
 
 function MainNavigator() {
@@ -32,11 +33,13 @@ function MainNavigator() {
       RNBootSplash.hide({fade: true});
     }, 3000);
   }, []);  
-
-
+  
   return (
       
-      <Stack.Navigator initialRouteName="Landing"  screenOptions={{headerShown: false}}>
+
+      <Stack.Navigator 
+
+      initialRouteName="Landing"  screenOptions={{headerShown: false}}>
         <Stack.Screen name="Landing" component={Landing}/>
         <Stack.Screen name="SignIn" component={SignIn}/>
         <Stack.Screen name="SignInNumber" component={SignInNumber}/>

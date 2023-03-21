@@ -4,7 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import database from '@react-native-firebase/database';
 import { styles } from "./style";
 import { COLORS } from "../../utils/colors";
-
+import auth from '@react-native-firebase/auth';
+import { setData } from "../../utils/store";
 
 
 function SignIn({ navigation }) {
@@ -26,20 +27,52 @@ function SignIn({ navigation }) {
     setenteredPassword(passtext);
   }
 
-  const Submit = async () => {
-    database()
-      .ref('/userDetails')
-      .set({
-        email: enteredEmail,
-        password: enteredPassword,
-      })
+  // const storeToken = async (userid) => {
+  //   console.log(">>>>>store fn>>userid>>>>", userid);
+  //  await AsyncStorage.setItem('usersdata', JSON.stringify(userid));
+  //  navigation.navigate('TabNavigator');
+  // }
+
+  const signin = (email, password) => {
+    try {
+      auth().signInWithEmailAndPassword(email, password).then((res) => {
+       
+        if(res){
+          const userValue = res.user;
+          const userId = userValue.uid;
+            // storeToken(userId);
+        setData('usersdata', JSON.stringify({userId: userId}));
+        navigation.navigate('TabNavigator');
+          Alert.alert("Login Successful");
+        }
+      }).catch((err) => {
+        let error = String(err);
+        if(error.includes("auth/user-not-found")){
+          Alert.alert("User not Exist, Please Signup");
+          navigation.navigate('SignUp');
+        }
+      });
+    } catch (error) {
+     Alert.alert("error");
+    }
+  };
+
+
+  // const Submit = async () => {
+  //   database()
+  //     .ref('/userDetails')
+  //     .push({
+  //       email: enteredEmail,
+  //       password: enteredPassword,
+  //     })
     // .then(() => console.log('Data set.'));
-  }
+  // }
 
 
   async function ButtonHandler() {
     validate();
-    Submit();
+    signin(enteredEmail, enteredPassword);
+    // Submit();
     // console.log("validate++=>", )
     // if (userList) {
     //   let find = userList.filter((item) => (item.userEmail == userdata.userEmail) && (item.userPassword == userdata.userPassword));
@@ -57,16 +90,20 @@ function SignIn({ navigation }) {
     //     Alert.alert('user not exist, please Signup first');
     //     navigation.navigate('SignUp');
     //  }
+
   }
 
   const getUserList = async () => {
 
-    let list = await AsyncStorage.getItem('usersdata');
-    console.log("JSON.parse(list) +++ >>> ", JSON.parse(list));
-    setUserList(JSON.parse(list));
+    // let list = await AsyncStorage.getItem('usersdata');
+    // console.log("JSON.parse(list) +++ >>> ", JSON.parse(list));
+    // setUserList(JSON.parse(list));
+
+    // return database()
+    // .ref('/userDetails').on('value', function (snapshot) {
+    //     console.log('+++++++++++++++++++',snapshot.val())
+    // })
   }
-
-
 
   useEffect(() => {
     getUserList();
