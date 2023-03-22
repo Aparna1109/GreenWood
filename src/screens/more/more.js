@@ -18,8 +18,6 @@ function More({ navigation }) {
 
 
   const clearAsyncStorage = async () => {
-    // AsyncStorage.clear();
-    // AsyncStorage.getAllKeys().then(AsyncStorage.multiRemove)
     clearData('usersdata');
     navigation.navigate('Landing');
   }

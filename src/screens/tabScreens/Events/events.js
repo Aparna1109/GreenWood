@@ -5,6 +5,8 @@ import { styles } from './style';
 import { COLORS } from "../../../utils/colors";
 import Card from '../../../components/card';
 import CardWithImage from '../../../components/cardWithImage';
+import { getData } from '../../../utils/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Data = [
   {
     id:1,
@@ -100,13 +102,22 @@ const [selectedId, setSelectedId] = useState(Data[0].id);
     )  
   }
 
+  // const checkLoggedUser = async () => {
+  //   try {
+  //     let user = JSON.parse(await AsyncStorage.getItem('usersdata'));
+  //   console.log("user===>", user);
+  //   } catch (e){
+
+  //   }
+  // }
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.storeContainer}>
         <View style={styles.storeTextContainer}>
           <Text style={styles.storeText}>Events</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={checkLoggedUser}>
           <Image source={require('../../../assets/images/location.png')} style={styles.map} />
         </TouchableOpacity>
       </View>

@@ -41,7 +41,7 @@ function SignIn({ navigation }) {
           const userValue = res.user;
           const userId = userValue.uid;
             // storeToken(userId);
-        setData('usersdata', JSON.stringify({userId: userId}));
+        setData('usersdata', {userId: userId});
         navigation.navigate('TabNavigator');
           Alert.alert("Login Successful");
         }
