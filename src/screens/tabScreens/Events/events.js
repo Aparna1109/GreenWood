@@ -117,7 +117,7 @@ const [selectedId, setSelectedId] = useState(Data[0].id);
         <View style={styles.storeTextContainer}>
           <Text style={styles.storeText}>Events</Text>
         </View>
-        <TouchableOpacity onPress={checkLoggedUser}>
+        <TouchableOpacity>
           <Image source={require('../../../assets/images/location.png')} style={styles.map} />
         </TouchableOpacity>
       </View>

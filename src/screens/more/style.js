@@ -100,6 +100,20 @@ const styles = StyleSheet.create({
     paddingTop:23, 
     paddingLeft:20, 
     paddingBottom:5
+  },
+  
+  logOutContainer:{
+    width: '100%', 
+    height: 50, 
+    backgroundColor: COLORS.seaweed, 
+    alignItems: 'center', 
+    justifyContent: 'center'
+  },
+
+  logOutText:{
+    fontSize: 15, 
+    color: COLORS.white, 
+    fontFamily: Fonts.poppinsRegular
   }
 
   })

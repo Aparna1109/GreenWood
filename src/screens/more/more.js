@@ -47,8 +47,9 @@ function More({ navigation }) {
 
       <SectionData />
 
-      <TouchableOpacity style={{ width: '100%', height: 50, backgroundColor: COLORS.seaweed, alignItems: 'center', justifyContent: 'center', }} onPress={clearAsyncStorage}>
-        <Text style={{ fontSize: 15, color: COLORS.white, fontFamily: Fonts.poppinsRegular, }}> Log Out</Text>
+      <TouchableOpacity style={styles.logOutContainer} 
+      onPress={clearAsyncStorage}>
+        <Text style={styles.logOutText}> Log Out</Text>
       </TouchableOpacity>
 
     </View>
